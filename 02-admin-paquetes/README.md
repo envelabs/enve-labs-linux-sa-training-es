@@ -5,7 +5,7 @@ en nuestro sistema.
 
 ### dpkg
 
-dpkg es el programa base para manejar paquetes Debian en el sistema. Dicha herramienta sirve para instalar un paquete Debian ya disponible ya que no descarga nada. 
+dpkg es el programa base para manejar paquetes Debian en el sistema. Dicha herramienta sirve para instalar un paquete Debian ya disponible debido a que este no descarga automaticamente. 
 
 
 ##### Instalacion de un paquete
