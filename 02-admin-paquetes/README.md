@@ -122,7 +122,7 @@ apt-get nos permite descargar, actualizar e instalar paquetes, apt-cache por otr
 ### systemctl
 El comando systemctl es una herramienta que sirve para poder controlar el sistema y sus servicios. 
 
-#####Para iniciar servicios 
+##### Para iniciar servicios 
 
     sudo systemctl start apache2.service
 
