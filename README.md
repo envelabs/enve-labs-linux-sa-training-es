@@ -1,4 +1,4 @@
-###netstat
+### netstat
 netstat (estadísticas de red) es una herramienta de la línea de comandos para controlar las conexiones de red entrantes y salientes, así como la visualización de las tablas de enrutamiento, las estadísticas de la interfaz. Es muy útil en términos de resolución de problemas de red y la medición del desempeño. Netstat es una de las herramientas de depuración de servicios de red más básicas, que le dice qué puertos están abiertos y si los programas escuchan en tales puertos.
 
 ##### Listado de todos los puertos (tanto TCP como UDP).
