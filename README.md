@@ -117,6 +117,7 @@ La orden ifconfig se utiliza para configurar correctamente los interfaces de red
 
      ifconfig eth0 netmask 255.255.255.0 
 
-##### Para mas informacion
+#####  Para mas informacion
 
      ifconfig --help
+
