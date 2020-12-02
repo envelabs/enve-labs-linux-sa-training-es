@@ -1,123 +1,146 @@
-### netstat
-netstat (estadísticas de red) es una herramienta de la línea de comandos para controlar las conexiones de red entrantes y salientes, así como la visualización de las tablas de enrutamiento, las estadísticas de la interfaz. Es muy útil en términos de resolución de problemas de red y la medición del desempeño. Netstat es una de las herramientas de depuración de servicios de red más básicas, que le dice qué puertos están abiertos y si los programas escuchan en tales puertos.
 
-##### Listado de todos los puertos (tanto TCP como UDP).
+### Netstat
+netstat es una herramienta de línea de comandos que muestra un listado de las conexiones activas de una computadora, tanto entrantes como salientes.
+LISTENING: El puerto está abierto escuchando, en espera de una conexión
+ESTABLISHED: La conexión ha sido establecida
+CLOSE_WAIT: La conexión está abierta, pero el otro extremo nos comunica que no se continuará enviando información
+TIME_WAIT: La conexión ha sido cerrada, pero no se elimina de la tabla de conexión por si queda algo pendiente de recibir
+LAST_ACK: La conexión se está cerrando
+CLOSED: La conexión ha sido cerrada completamente
 
-     netstat -a | more
+##### Listado de todos los puertos de escucha TCP y conexiones UDP
+      netstat -a 
+##### Listado de conexiones de puertos TCP  (Transmission Control Protocol) 
+       netstat -at
 
-##### Listado solo de las conexiones de puerto TCP ( Protocolo de control de transmisión).
+##### Listado sólo conexiones de puerto UDP (User Datagram Protocol) 
+       netstat -au
 
-    netstat -at
+##### Listado de todas las conexiones activas de escucha de puertos 
+       netstat -l
 
-##### Listado solo de las conexiones de puerto UDP ( Protocolo de datagramas de usuario).
+##### Listado de todos los puertos TCP de escucha activa mediante la opción
+        netstat -lt 
 
-     netstat -au
+##### Listado de todos los puertos UDP de escucha activa mediante la opción
+ netstat -lu
 
-##### Listado de todas las conexiones de puertos de escucha activas.
+##### Mostrando estadísticas por protocolo.  para TCP, UDP, ICMP e IP. 
 
-     netstat -l
+         Netstat -s
 
-##### Listado de todos los puertos TCP de escucha activos.
+###### Mostrando estadísticas de único protocolo TCP mediante la opción 
 
-     netstat -lt
+         netstat -st
 
-##### Listado de todos los puertos UDP de escucha activos.
+##### Visualización del nombre de servicio con PID
 
-     netstat -lu
+           Netstat -tp
 
-##### Listado de todos los puertos de escucha activos de UNIX.
+##### Viendo modo promiscuo, netstat imprimirá la información seleccionada o actualización de la pantalla cada cinco segundo. Actualización de la pantalla por defecto en cada segundo.
 
-     netstat -lx
+      netstat -ac 5 |grep tcp
 
-##### Mostrando estadísticas por protocolo
-     
-     netstat -s
+##### Viendo enrutamiento IP del núcleo
+            Netstat -r
 
-##### Mostrando estadísticas por protocolo TCP
+#####  Mostrando transacciones de paquetes de interfaz de red que incluye tanto la transferencia y recepción de paquetes con un tamaño de MTU.
 
-      netstat -st
+         netstat -l 
 
-##### Desplegar estadísticas del protocolo UDP 
-      
-      netstat -su
+##### Mostrando tabla de interfaz del kernel
 
-##### Al mostrar el nombre del servicio con su número de PID, con la opción netstat -tp se mostrará "PID/Nombre del programa".
+         netstat -ie 
 
-      netstat -tp
+##### Visualización de información de IPv4 e IPv6
 
-##### Mostrando el modo Promiscuo con el interruptor -ac, netstat imprime la información seleccionada o actualiza la pantalla cada cinco segundos. Actualización de pantalla predeterminada en cada segundo.
+         netstat -g
 
-       netstat -ac 5 | grep tcp
+##### Imprimir Información Netstat continuamente
 
-##### Mostrar la tabla de enrutamiento IP del kernel con netstat y comando de ruta.
+         netstat -g
 
-       netstat -r
+##### Encontrar familias de direcciones sin configurar con alguna información útil.
 
-
-##### Mostrar las transacciones de paquetes de interfaz de red que incluyen tanto la transferencia como la recepción de paquetes con el tamaño de MTU.
-
-       netstat -i
-
-##### Muestra información de pertenencia a grupos de multidifusión tanto para IPv4 como para IPv6.
-
-       netstat -g
-
-##### Averiguar  cuántos programas de escucha se ejecutan en un puerto.
-
-       netstat -ap | grep http
-
-##### Para mas infomacion 
-     
-     netstat --help
-
-
-
-### ifconfig
+         netstat --verbose
  
-La orden ifconfig se utiliza para configurar correctamente los interfaces de red de nuestro sistema Unix, se utiliza para  inicializar la interfaz de red y para habilitar o deshabilitar dichas interfaces.
+##### para más información 
 
-##### Para obtener información de interfaces de red activas:
-    
-      ifconfig
+         netstat --help 
 
-##### Ver la configuración de red de un adaptador Ethernet 
-    
-     ifconfig eth0
+### Ifconfig 
 
-##### Mostrar detalles de todas las interfaces, incluidas las interfaces deshabilitadas
+##### ifconfig sin argumentos nos muestra los detalles de todos los interfaces de red que se encuentren activos en nuestro sistema.
   
-    ifconfig -a
+      ifconfig 
 
-##### Deshabilitar una interfaz
+ #####  Para deshabilitar un adaptador de red
 
-      ifconfig eth0 down
-    
-
-##### Habilitar una interfaz
+       ifconfig enp0s3 down
  
-     ifconfig eth0 up
+ #####  si quisiéramos mostrar todos los adaptadores, incluidos los deshabilitados.
+      
+      ifconfig -a 
 
-##### Asignar dirección IP a una interfaz
+ ##### Para volver a habilitar un adaptador de red deshabilitado.
+
+      Ifconfig enp0s3 up
+##### Para asignar una nueva dirección IP al adaptador de red.
    
-    ifconfig eth0 192.168.2.2
+     ifconfig enp0s3 192.168.1.10
 
-##### Modo promiscuo
+##### Si necesitamos asignar una nueva máscara de red al adaptador, habrá que incluir la palabra netmask.
+    
+     ifconfig enp0s3 netmask 255.255.255.0
 
-    ifconfig eth0 promisc
+##### Modo promiscuo 
 
-##### Salir del modo promiscuo el interfaz
+      ifconfig enp0s3 promisc
 
-     ifconfig eth0 -promisc   
 
-##### Establecer el valor de MTU del interface
+##### Cuando necesitemos devolver el adaptador a su configuración normal.
 
-      ifconfig eth0 mtu 1500    
+     ifconfig enp0s3 -promisc
 
-##### Establecer la máscara para el interfaz eth0
+##### Para mas info 
+      
+      ifconfig --help
 
-     ifconfig eth0 netmask 255.255.255.0 
 
-#####  Para mas informacion
+### PS 
+  El comando ps muestra por pantalla un listado de los procesos que se están ejecutando en el sistema.
+  Si no añadimos ningún parámetro, ps mostrará los procesos del usuario con el que estamos logueados.
+  
+#####  Listar los procesos de todos los usuarios con información añadida
+    
+        ps -aux 
 
-     ifconfig --help
+##### Listar los procesos de todos los usuarios.
+    
+        ps -a 
 
+##### Listar información del proceso como por ejemplo el usuario que lo está corriendo, la utilización de Cpu y memoria, etc.
+      
+      ps -u 
+
+##### Listar procesos de todas las terminales y usuarios.
+
+       ps -x
+
+##### Mostrar información que incluye el UID    
+    
+       ps -l
+
+#### Mostrar el listado procesos en un formato tipo árbol que permite ver como los procesos interactuan entre si.
+  
+       ps -forest
+
+###  Kill
+
+  Este comando simplemente envía una señal para terminar uno o más identificadores de proceso (Process ID). Debe ser propietario del proceso o ser un usuario privilegiado.
+
+      
+
+##### Si queremos finalizar el proceso  debemos mencionar el PID del Servicio.
+
+      kill <PID>
