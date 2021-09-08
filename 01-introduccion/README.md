@@ -13,7 +13,6 @@ un comando es una instrucción que le damos al sistema operativo para que nos pe
 
 ##### formato de un comando
 
-
     <nombre-comando> [-opciones] [param1|param2|param-n]
 
 
@@ -26,7 +25,7 @@ todo comando presenta una ayuda mediante documentación a la que se puede accede
 el comando `pwd` nos permite identificar el lugar en el que nos encontramos dentro del sistema de Archivos
 
     pwd
-    
+
 
 ##### listando Archivos
 el comando `ls` nos permite listar el contenido de directorios como también ver propiedaes de los arhivos
@@ -81,27 +80,14 @@ el comando `cat` nos permite mostrar el contenido de un arhivo a través de la s
 ##### buscar archivos
 el comando `which` nos permite buscar por nombre a través de los directorios definidos en la variable $PATH
 
-    ###buscar donde
-    echo $PATH
-
     which <nombre-archivo>
 
-    ### localizar
+##### localizar
+
     updatedb
 
     locate <nombre-archivo>  
 
-    ### encontrar
+##### buscar archivos o directorios
+
     find <nombre-archivo>
-
-##### variables
-
-##### history
-
-    history
-    !1
-    !!
-
-##### piping y redireccionamiento
-
-##### busqueda de texto
