@@ -17,7 +17,6 @@ texto
 
 
 ### otro titulo
-texto
 
 
 ##### formato de un comando
@@ -27,21 +26,25 @@ texto
 
 
 ### apt-get / apt-cache
+    apt update
+    apt upgrade
+    apt-cache search and apt show
+    apt install
+    apt remove --purge
+
 
 ### systemctl
 
     systemctl enable application
-    
     systemctl start application
     systemctl stop application
     systemctl restart application
     systemctl reload application
-    
-    systemctl disable application
-    
-    systemctl status application
-    
-    systemctl list-units
-    
-    systemctl list-units --all
 
+    systemctl disable application
+
+    systemctl status application
+
+    systemctl list-units
+
+    systemctl list-units --all

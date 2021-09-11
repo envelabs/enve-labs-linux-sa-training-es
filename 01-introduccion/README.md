@@ -91,3 +91,16 @@ el comando `which` nos permite buscar por nombre a través de los directorios de
 ##### buscar archivos o directorios
 
     find <nombre-archivo>
+
+##### history
+
+    history
+    !1
+    !!
+
+
+##### piping y redireccionamiento
+
+##### busqueda de texto
+
+##### variables
