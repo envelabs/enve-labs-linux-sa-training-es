@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "hashicorp/bionic64"
+  config.vm.box = "ubuntu/focal64"
   config.vm.hostname = "enve-labs-linux-sa-vm"
   config.vm.network :public_network, bridge: ''
   config.vm.network "forwarded_port", guest: 80, host: 80
